@@ -1,9 +1,23 @@
+/* 02 */
+
 var linguagem = "Javascript";
 console.log("Aprendendo " + linguagem);
 
 // variáveis podem ser redeclaradas
 var linguagem = "Java";
 console.log("Aprendendo " + linguagem);
+
+// a variável nome já existe aqui, mas não tem valor atribuído (undefined)
+// ela é içada para fora do bloco (declarada como var - efeito global)
+
+console.log(`Oi, ${nome}`); // o nome disso aqui é interpolação
+var idade = 18;
+
+if (idade >= 18) {
+  var nome = "João";
+  console.log(`Parabéns, ${nome}. Você já pode dirigir!`);
+}
+console.log(`Tchau, ${nome}`);
 
 /* 01 */
 
