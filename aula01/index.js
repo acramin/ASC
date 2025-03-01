@@ -1,40 +1,72 @@
-/* 08 - funções */
+/* 09 - arrow function */
 
-// funções com o mesmo nome se sobrescrevem 
-function hello () {
-    console.log('Oi')
-}
+// não tem nome e pode ser armazenada em constantes e variáveis
+// pode ser criada dentro de métodos
+
+const hello = () => console.log('Oi')
 hello()
 
-function hello (nome) {
-    console.log(`Oi, ${nome}`)
+const dobro = (valor) => {
+    return 2 * valor
 }
-hello('Pedro') // fosse salvo em uma variável retornaria undefined
+console.log(dobro(10))
 
-// função com retorno
-function soma (a, b){
-    return a + b
+const triplo = (valor) => {
+    return 3 * valor
+}
+console.log(triplo(10))
+
+const ePar = (valor) => {
+    valor % 2 === 0 // sem o return devolve o undefined
 }
 
-const resp = soma(2,3)
-console.log(resp)
+console.log(ePar(10))
 
-const resp1 = soma('2',3 )
-console.log(resp1)
 
-// funções anonimas são atribuídas a variáveis
-const dobro = function (n){
-    return n*2
+const ePar1 = (valor) => {
+    return valor % 2 === 0
 }
-const resp2 = dobro(4)
-console.log(resp2)
 
-// criar parâmetros com valor padrão
-const triplo = function (n = 5){
-    return 3 * n
-}
-console.log(triplo()) // usa o valor default
-console.log(triplo(10)) // usa o valor passado
+console.log(ePar1(10))
+
+
+/* 08 - funções */
+
+// // funções com o mesmo nome se sobrescrevem 
+// function hello () {
+//     console.log('Oi')
+// }
+// hello()
+
+// function hello (nome) {
+//     console.log(`Oi, ${nome}`)
+// }
+// hello('Pedro') // fosse salvo em uma variável retornaria undefined
+
+// // função com retorno
+// function soma (a, b){
+//     return a + b
+// }
+
+// const resp = soma(2,3)
+// console.log(resp)
+
+// const resp1 = soma('2',3 )
+// console.log(resp1)
+
+// // funções anonimas são atribuídas a variáveis
+// const dobro = function (n){
+//     return n*2
+// }
+// const resp2 = dobro(4)
+// console.log(resp2)
+
+// // criar parâmetros com valor padrão
+// const triplo = function (n = 5){
+//     return 3 * n
+// }
+// console.log(triplo()) // usa o valor default
+// console.log(triplo(10)) // usa o valor passado
 
 
 /* 07 - Métodos de vetor */
