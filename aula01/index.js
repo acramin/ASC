@@ -1,16 +1,31 @@
+/* 05 - Comparação */
+console.log(1 == 1) // true
+console.log(1 === 1) // true
+console.log(1 == '1') // true
+console.log(1 === '1') // false
+console.log(true == 1) // true
+console.log(true == 2) // false
+console.log(false == 2) // false
+console.log(false == 0) // true
+console.log(1 == [1]) // true
+console.log(null == null) // true
+console.log(null == undefined) // true
+console.log([] == false) // true
+console.log([] == []) // false
+
 /* 04 - - Tipos e coerção */
 
 // Coerção
-const n1 = 2; // tipo Number
-const n2 = '3'; // tipo String
+// const n1 = 2; // tipo Number
+// const n2 = '3'; // tipo String
 
-// Coerção implícita -> concatena
-const n3 = n1 + n2;
-console.log(n3);
+// // Coerção implícita -> concatena
+// const n3 = n1 + n2;
+// console.log(n3);
 
-// Coerção explicita -> soma
-const n4 = n1 + Number(n2);
-console.log(n4);
+// // Coerção explicita -> soma
+// const n4 = n1 + Number(n2);
+// console.log(n4);
 
 /* 03 - Commit  */
 
