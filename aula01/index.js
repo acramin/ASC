@@ -1,26 +1,45 @@
+/* 07 - Métodos de vetor */
+
+const nomes = ['Ana Maria', 'Antonio', 'Rodrigo', 'Alex', 'Cristina'];
+
+const nomesComA = nomes.filter((n) => n.startsWith('A')); /// startsWith é método de string
+// filtro retorna outro array apenas com os valores que retornaram true dentro a arrow function
+console.log(nomesComA);
+
+const resp = nomes.map((n) => n.charAt(0)); // charAt retorna o carácter na posição pedida
+// map passa por todos e retorna novo array aplicando a função
+console.log(resp)
+
+const todosComecamComA = nomes.every((n) => n.startsWith('A')) // every retorna um valor escalar, todos tem que seguir a regra para ser true
+console.log(todosComecamComA);
+
+valores = [1,2,3,4];
+const soma = valores.reduce((ac, v) => ac +v); // devolve apenas um valor, o valor que fica acumulado na primeira variável
+console.log(soma);
+
 /* 06 - Vetores */
 
-// são como as listas do python, aceita qualquer tipo e cresce dinamicamente
+// // são como as listas do python, aceita qualquer tipo e cresce dinamicamente
 
-v1 = []; // Declaração
-v1[0] = 3.4; // coloca na posição 0
-v1[10] = 2; // coloca na posição 10
-v1[2] = 'abc'; // coloca na posição 2
-console.log(v1.length); // devolve o tamanho
-console.log(v1); // devolve o vetor
+// v1 = []; // Declaração
+// v1[0] = 3.4; // coloca na posição 0
+// v1[10] = 2; // coloca na posição 10
+// v1[2] = 'abc'; // coloca na posição 2
+// console.log(v1.length); // devolve o tamanho
+// console.log(v1); // devolve o vetor
 
-v2 = [2, 'abc', true];
-console.log(v2);
+// v2 = [2, 'abc', true];
+// console.log(v2);
 
-// iterando 
-for(let i = 0; i < v2.length; i++){
-    console.log(v2[i]);
-}
+// // iterando 
+// for(let i = 0; i < v2.length; i++){
+//     console.log(v2[i]);
+// }
 
-const v3 = [1];
-v3[2] = 'abc'; // adiciona no array -> muda o estado
-console.log(v3);
-// v3 = [4]; // isso dá erro -> tentado atribuir novo vetor
+// const v3 = [1];
+// v3[2] = 'abc'; // adiciona no array -> muda o estado
+// console.log(v3);
+// // v3 = [4]; // isso dá erro -> tentado atribuir novo vetor
 
 /* 05 - Comparação */
 // console.log(1 == 1) // true
