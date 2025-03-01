@@ -1,21 +1,60 @@
-/* 07 - Métodos de vetor */
+/* 08 - funções */
 
-const nomes = ['Ana Maria', 'Antonio', 'Rodrigo', 'Alex', 'Cristina'];
+// funções com o mesmo nome se sobrescrevem 
+function hello () {
+    console.log('Oi')
+}
+hello()
 
-const nomesComA = nomes.filter((n) => n.startsWith('A')); /// startsWith é método de string
-// filtro retorna outro array apenas com os valores que retornaram true dentro a arrow function
-console.log(nomesComA);
+function hello (nome) {
+    console.log(`Oi, ${nome}`)
+}
+hello('Pedro') // fosse salvo em uma variável retornaria undefined
 
-const resp = nomes.map((n) => n.charAt(0)); // charAt retorna o carácter na posição pedida
-// map passa por todos e retorna novo array aplicando a função
+// função com retorno
+function soma (a, b){
+    return a + b
+}
+
+const resp = soma(2,3)
 console.log(resp)
 
-const todosComecamComA = nomes.every((n) => n.startsWith('A')) // every retorna um valor escalar, todos tem que seguir a regra para ser true
-console.log(todosComecamComA);
+const resp1 = soma('2',3 )
+console.log(resp1)
 
-valores = [1,2,3,4];
-const soma = valores.reduce((ac, v) => ac +v); // devolve apenas um valor, o valor que fica acumulado na primeira variável
-console.log(soma);
+// funções anonimas são atribuídas a variáveis
+const dobro = function (n){
+    return n*2
+}
+const resp2 = dobro(4)
+console.log(resp2)
+
+// criar parâmetros com valor padrão
+const triplo = function (n = 5){
+    return 3 * n
+}
+console.log(triplo()) // usa o valor default
+console.log(triplo(10)) // usa o valor passado
+
+
+/* 07 - Métodos de vetor */
+
+// const nomes = ['Ana Maria', 'Antonio', 'Rodrigo', 'Alex', 'Cristina'];
+
+// const nomesComA = nomes.filter((n) => n.startsWith('A')); /// startsWith é método de string
+// // filtro retorna outro array apenas com os valores que retornaram true dentro a arrow function
+// console.log(nomesComA);
+
+// const resp = nomes.map((n) => n.charAt(0)); // charAt retorna o carácter na posição pedida
+// // map passa por todos e retorna novo array aplicando a função
+// console.log(resp)
+
+// const todosComecamComA = nomes.every((n) => n.startsWith('A')) // every retorna um valor escalar, todos tem que seguir a regra para ser true
+// console.log(todosComecamComA);
+
+// valores = [1,2,3,4];
+// const soma = valores.reduce((ac, v) => ac +v); // devolve apenas um valor, o valor que fica acumulado na primeira variável
+// console.log(soma);
 
 /* 06 - Vetores */
 
