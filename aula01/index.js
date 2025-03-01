@@ -1,8 +1,22 @@
-/* 03  */
+/* 04 - - Tipos e coerção */
 
-console.log("testando commit pelo vscode")
+// Coerção
+const n1 = 2; // tipo Number
+const n2 = '3'; // tipo String
 
-/* 02 */
+// Coerção implícita -> concatena
+const n3 = n1 + n2;
+console.log(n3);
+
+// Coerção explicita -> soma
+const n4 = n1 + Number(n2);
+console.log(n4);
+
+/* 03 - Commit  */
+
+// console.log("testando commit pelo vscode")
+
+/* 02 - Prints */
 
 // var linguagem = "Javascript";
 // console.log("Aprendendo " + linguagem);
@@ -23,7 +37,7 @@ console.log("testando commit pelo vscode")
 // }
 // console.log(`Tchau, ${nome}`);
 
-/* 01 */
+/* 01 - Criação de variáveis */
 
 // // Declarando constantes
 // const nome = "José";
