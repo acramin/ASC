@@ -1,17 +1,41 @@
+/* 06 - Vetores */
+
+// são como as listas do python, aceita qualquer tipo e cresce dinamicamente
+
+v1 = []; // Declaração
+v1[0] = 3.4; // coloca na posição 0
+v1[10] = 2; // coloca na posição 10
+v1[2] = 'abc'; // coloca na posição 2
+console.log(v1.length); // devolve o tamanho
+console.log(v1); // devolve o vetor
+
+v2 = [2, 'abc', true];
+console.log(v2);
+
+// iterando 
+for(let i = 0; i < v2.length; i++){
+    console.log(v2[i]);
+}
+
+const v3 = [1];
+v3[2] = 'abc'; // adiciona no array -> muda o estado
+console.log(v3);
+// v3 = [4]; // isso dá erro -> tentado atribuir novo vetor
+
 /* 05 - Comparação */
-console.log(1 == 1) // true
-console.log(1 === 1) // true
-console.log(1 == '1') // true
-console.log(1 === '1') // false
-console.log(true == 1) // true
-console.log(true == 2) // false
-console.log(false == 2) // false
-console.log(false == 0) // true
-console.log(1 == [1]) // true
-console.log(null == null) // true
-console.log(null == undefined) // true
-console.log([] == false) // true
-console.log([] == []) // false
+// console.log(1 == 1) // true
+// console.log(1 === 1) // true
+// console.log(1 == '1') // true
+// console.log(1 === '1') // false
+// console.log(true == 1) // true
+// console.log(true == 2) // false
+// console.log(false == 2) // false
+// console.log(false == 0) // true
+// console.log(1 == [1]) // true
+// console.log(null == null) // true
+// console.log(null == undefined) // true
+// console.log([] == false) // true
+// console.log([] == []) // false
 
 /* 04 - - Tipos e coerção */
 
