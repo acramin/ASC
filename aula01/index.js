@@ -1,62 +1,134 @@
+/* 12 - JSON */
+
+let pessoa = {
+  // JSON Object
+  nome: "João",
+  idade: 17,
+};
+
+// acessar propriedade
+console.log("Me chama " + pessoa.nome);
+console.log("Tenho " + pessoa["idade"] + "anos");
+
+function getPropriedade(prop) {
+  console.log(pessoa[prop]);
+}
+
+getPropriedade("nome");
+getPropriedade("idade");
+
+let pessoaComEndereco = {
+  nome: "Maria",
+  idade: 21,
+  endereco: {
+    logradouro: "Rua B",
+    numero: 121,
+    complemento: "apto 12",
+  },
+};
+
+console.log(
+  `Sou ${pessoaComEndereco.nome}, tenho ${pessoaComEndereco.idade} anos e moro na rua ${pessoaComEndereco.endereco["logradouro"]} número ${pessoaComEndereco["endereco"]["numero"]} complemento ${pessoaComEndereco.endereco.complemento}`
+);
+
+// JSON array
+
+let concessionaria = {
+  cnpj: "00011122210001-45",
+  endereco: {
+    logradouro: "Rua A",
+    numero: 10,
+    bairro: "Vila J",
+    coordenadas: {
+      latitude: 43.294563,
+      longitude: -75.456972,
+    },
+  },
+  veiculos: [
+    { marca: "Ford", modelo: "Ecosport", anoFabricacao: 2018 },
+    { marca: "Chevrolet", modelo: "Onix", anoFabricacao: 2020 },
+    { marca: "Volkswagen", modelo: "Nivus", anoFabricacao: 2020 },
+  ],
+};
+
+for (let veiculo of concessionaria.veiculos) {
+  console.log(`Marca: ${veiculo.marca}`);
+  console.log(`Modelo : ${veiculo.modelo}`);
+  console.log(`Ano de Fabricação :  ${veiculo.anoFabricacao}`);
+}
+
+// funções em JSON
+let calculadora = {
+    // pode ser arrow function
+    soma : (a, b) => a +b,
+    // pode ser uma função comum também
+    subtracao : function(a,b){
+        return a -b
+    }
+}
+
+console.log(`2 + 3 = ${calculadora.soma(2,3)}`)
+console.log(`2 - 3 = ${calculadora.subtracao(2,3)}`)
+
 /* 11 - Escopo de uma função */
 
-function f() {
-  let nome = "João";
-  function g() {
-    console.log(nome);
-  } // escopo interno
-  g(); // chama g
-} // escopo externo
-f(); // chama f
+// function f() {
+//   let nome = "João";
+//   function g() {
+//     console.log(nome);
+//   } // escopo interno
+//   g(); // chama g
+// } // escopo externo
+// f(); // chama f
 
-function ola() {
-  let nome = "João";
-  return function () {
-    console.log("Olá, " + nome);
-  };
-}
+// function ola() {
+//   let nome = "João";
+//   return function () {
+//     console.log("Olá, " + nome);
+//   };
+// }
 
-let olaResult = ola();
-/*perceba que aqui a função ola já terminou.
-É de se esperar que a variável nome já não
-possa ser acessada.*/
-olaResult();
+// let olaResult = ola();
+// /*perceba que aqui a função ola já terminou.
+// É de se esperar que a variável nome já não
+// possa ser acessada.*/
+// olaResult();
 
-// também vale com parâmetros
-function saudacoesFactory(saudacao, nome){
-    return function(){
-        console.log(saudacao + ', ' + nome)
-    }
-}
+// // também vale com parâmetros
+// function saudacoesFactory(saudacao, nome){
+//     return function(){
+//         console.log(saudacao + ', ' + nome)
+//     }
+// }
 
-let olaJoao = saudacoesFactory('Olá', 'Jão')
-let tchauJose = saudacoesFactory('Tchau', 'Zé')
-olaJoao()
-tchauJose()
+// let olaJoao = saudacoesFactory('Olá', 'Jão')
+// let tchauJose = saudacoesFactory('Tchau', 'Zé')
+// olaJoao()
+// tchauJose()
 
-/* Uma função interna em conjunto com as variáveis de seu escopo externo é o que chamamos de closure*/
+// /* Uma função interna em conjunto com as variáveis de seu escopo externo é o que chamamos de closure*/
 
-function eAgora(){
-    let cont = 1
-    function f1(){
-        console.log(cont)
-    }
-    cont++
-    function f2(){
-        console.log(cont)
-    }
-    return{ f1, f2} // devolve um JSON de funções
-}
+// function eAgora(){
+//     let cont = 1
+//     function f1(){
+//         console.log(cont)
+//     }
+//     cont++
+//     function f2(){
+//         console.log(cont)
+//     }
+//     return{ f1, f2} // devolve um JSON de funções
+// }
 
-let eAgoraResult = eAgora()
-/* neste momento, a funcao eAgora já
-executou por completo e a variável
-cont já foi incrementada. Seu valor final
-é mantido e, assim, ambas f1 e f2 exibirão 2.
-*/
+// let eAgoraResult = eAgora()
+// /* neste momento, a funcao eAgora já
+// executou por completo e a variável
+// cont já foi incrementada. Seu valor final
+// é mantido e, assim, ambas f1 e f2 exibirão 2.
+// */
 
-eAgoraResult.f1()
-eAgoraResult.f2()
+// eAgoraResult.f1()
+// eAgoraResult.f2()
 
 /* 10 - closure */
 
