@@ -1,74 +1,100 @@
+/* 13 - Execução Síncrona e Assíncrona */
+
+// Modelo Single Threaded = único ciclo de execução, sem execução paralela
+console.log('Primeiro')
+console.log('Segundo')
+console.log('Terceiro')
+
+const a = 2 + 7     // 1°
+const b = 5         // 2°
+console.log(a + b)  // 3°
+
+function demorada(){
+    const atualMais2Segundos = new Date().getTime() + 2000
+    while (new Date().getTime <= atualMais2Segundos);
+    const d = 8+ 4
+    return d
+}
+
+const c = 2 +3
+const e = 5 + 9
+const d = demorada() 
+
+// o valor de f não depende do valor devolvido da função demorada
+const f = 2 + a + b
+console.log(f)
+
 /* 12 - JSON */
 
-let pessoa = {
-  // JSON Object
-  nome: "João",
-  idade: 17,
-};
+// let pessoa = {
+//   // JSON Object
+//   nome: "João",
+//   idade: 17,
+// };
 
-// acessar propriedade
-console.log("Me chama " + pessoa.nome);
-console.log("Tenho " + pessoa["idade"] + "anos");
+// // acessar propriedade
+// console.log("Me chama " + pessoa.nome);
+// console.log("Tenho " + pessoa["idade"] + "anos");
 
-function getPropriedade(prop) {
-  console.log(pessoa[prop]);
-}
+// function getPropriedade(prop) {
+//   console.log(pessoa[prop]);
+// }
 
-getPropriedade("nome");
-getPropriedade("idade");
+// getPropriedade("nome");
+// getPropriedade("idade");
 
-let pessoaComEndereco = {
-  nome: "Maria",
-  idade: 21,
-  endereco: {
-    logradouro: "Rua B",
-    numero: 121,
-    complemento: "apto 12",
-  },
-};
+// let pessoaComEndereco = {
+//   nome: "Maria",
+//   idade: 21,
+//   endereco: {
+//     logradouro: "Rua B",
+//     numero: 121,
+//     complemento: "apto 12",
+//   },
+// };
 
-console.log(
-  `Sou ${pessoaComEndereco.nome}, tenho ${pessoaComEndereco.idade} anos e moro na rua ${pessoaComEndereco.endereco["logradouro"]} número ${pessoaComEndereco["endereco"]["numero"]} complemento ${pessoaComEndereco.endereco.complemento}`
-);
+// console.log(
+//   `Sou ${pessoaComEndereco.nome}, tenho ${pessoaComEndereco.idade} anos e moro na rua ${pessoaComEndereco.endereco["logradouro"]} número ${pessoaComEndereco["endereco"]["numero"]} complemento ${pessoaComEndereco.endereco.complemento}`
+// );
 
-// JSON array
+// // JSON array
 
-let concessionaria = {
-  cnpj: "00011122210001-45",
-  endereco: {
-    logradouro: "Rua A",
-    numero: 10,
-    bairro: "Vila J",
-    coordenadas: {
-      latitude: 43.294563,
-      longitude: -75.456972,
-    },
-  },
-  veiculos: [
-    { marca: "Ford", modelo: "Ecosport", anoFabricacao: 2018 },
-    { marca: "Chevrolet", modelo: "Onix", anoFabricacao: 2020 },
-    { marca: "Volkswagen", modelo: "Nivus", anoFabricacao: 2020 },
-  ],
-};
+// let concessionaria = {
+//   cnpj: "00011122210001-45",
+//   endereco: {
+//     logradouro: "Rua A",
+//     numero: 10,
+//     bairro: "Vila J",
+//     coordenadas: {
+//       latitude: 43.294563,
+//       longitude: -75.456972,
+//     },
+//   },
+//   veiculos: [
+//     { marca: "Ford", modelo: "Ecosport", anoFabricacao: 2018 },
+//     { marca: "Chevrolet", modelo: "Onix", anoFabricacao: 2020 },
+//     { marca: "Volkswagen", modelo: "Nivus", anoFabricacao: 2020 },
+//   ],
+// };
 
-for (let veiculo of concessionaria.veiculos) {
-  console.log(`Marca: ${veiculo.marca}`);
-  console.log(`Modelo : ${veiculo.modelo}`);
-  console.log(`Ano de Fabricação :  ${veiculo.anoFabricacao}`);
-}
+// for (let veiculo of concessionaria.veiculos) {
+//   console.log(`Marca: ${veiculo.marca}`);
+//   console.log(`Modelo : ${veiculo.modelo}`);
+//   console.log(`Ano de Fabricação :  ${veiculo.anoFabricacao}`);
+// }
 
-// funções em JSON
-let calculadora = {
-    // pode ser arrow function
-    soma : (a, b) => a +b,
-    // pode ser uma função comum também
-    subtracao : function(a,b){
-        return a -b
-    }
-}
+// // funções em JSON
+// let calculadora = {
+//     // pode ser arrow function
+//     soma : (a, b) => a +b,
+//     // pode ser uma função comum também
+//     subtracao : function(a,b){
+//         return a -b
+//     }
+// }
 
-console.log(`2 + 3 = ${calculadora.soma(2,3)}`)
-console.log(`2 - 3 = ${calculadora.subtracao(2,3)}`)
+// console.log(`2 + 3 = ${calculadora.soma(2,3)}`)
+// console.log(`2 - 3 = ${calculadora.subtracao(2,3)}`)
 
 /* 11 - Escopo de uma função */
 
