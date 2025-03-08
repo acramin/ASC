@@ -1,38 +1,81 @@
+/* 10 - closure */
+
+// função sendo atribuída a uma variável
+let umaFuncao = function () {
+  console.log("Func armazenada em variável");
+};
+
+// chamada da função
+umaFuncao();
+
+// função de alta ordem -> recebe uma função como parâmetro e/ou devolve uma função
+function f(funcao) {
+  // chamando a função
+  // tipagem dinâmica pesa aqui
+  funcao();
+}
+
+function g() {
+  function outraFuncao() {
+    console.log("Fui criada por g");
+  }
+  return outraFuncao;
+}
+
+// f pode ser chamada assim
+f(function(){
+    console.log('Estou sendo passada para f')
+})
+// e g pode ser chamada assim
+const gResult = g()
+gResult()
+// ou assim 
+g()()
+
+console.log(gResult) // objeto indicando que é uma função
+
+// mais testes
+// f chama gm que devolve uma função. Nada será exibido
+f(g)
+// f chama a função devolvida por g. Exibe coisa
+f(g())
+// f tenta chamar o que a função criada por g devolve. Não devolve nada. Acontece um erro em tempo de execução
+f(g()()) // ta tentando executar uma string que retorna
+f(1) // não é função, então dá erro
+
 /* 09 - arrow function */
 
 // não tem nome e pode ser armazenada em constantes e variáveis
 // pode ser criada dentro de métodos
 
-const hello = () => console.log('Oi')
-hello()
+// const hello = () => console.log('Oi')
+// hello()
 
-const dobro = (valor) => {
-    return 2 * valor
-}
-console.log(dobro(10))
+// const dobro = (valor) => {
+//     return 2 * valor
+// }
+// console.log(dobro(10))
 
-const triplo = (valor) => {
-    return 3 * valor
-}
-console.log(triplo(10))
+// const triplo = (valor) => {
+//     return 3 * valor
+// }
+// console.log(triplo(10))
 
-const ePar = (valor) => {
-    valor % 2 === 0 // sem o return devolve o undefined
-}
+// const ePar = (valor) => {
+//     valor % 2 === 0 // sem o return devolve o undefined
+// }
 
-console.log(ePar(10))
+// console.log(ePar(10))
 
+// const ePar1 = (valor) => {
+//     return valor % 2 === 0
+// }
 
-const ePar1 = (valor) => {
-    return valor % 2 === 0
-}
-
-console.log(ePar1(10))
-
+// console.log(ePar1(10))
 
 /* 08 - funções */
 
-// // funções com o mesmo nome se sobrescrevem 
+// // funções com o mesmo nome se sobrescrevem
 // function hello () {
 //     console.log('Oi')
 // }
@@ -68,7 +111,6 @@ console.log(ePar1(10))
 // console.log(triplo()) // usa o valor default
 // console.log(triplo(10)) // usa o valor passado
 
-
 /* 07 - Métodos de vetor */
 
 // const nomes = ['Ana Maria', 'Antonio', 'Rodrigo', 'Alex', 'Cristina'];
@@ -102,7 +144,7 @@ console.log(ePar1(10))
 // v2 = [2, 'abc', true];
 // console.log(v2);
 
-// // iterando 
+// // iterando
 // for(let i = 0; i < v2.length; i++){
 //     console.log(v2[i]);
 // }
