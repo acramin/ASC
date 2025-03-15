@@ -1,19 +1,34 @@
 /* 13 - Execução Síncrona ou Bloqueante */
 
-function demorada(tempo){
-  console.log(`demorada ${tempo}`)
-  const atualMaisTempo = new Date().getTime() + tempo
-  while(new Date().getTime() <= atualMaisTempo);
-  const d = 8 + 4;
-  return d
-}
+// abrir arquivo pode ser que use uma thread separada para funcionar
+const fs = require("fs"); // import da biblioteca file system
+const abrirArquivo = function (nomeArquivo) {
+  const exibirConteudo = function (erro, conteudo) { // primeiro vem o erro, depois o conteúdo (o retorno de readFile é dessa forma)
+    if (erro) {
+      console.log(`Deu erro: ${erro}`);
+    } else {
+      console.log(conteudo.toString());
+    }
+  };
+  fs.readFile(nomeArquivo, exibirConteudo); // recebe um arquivo e uma função que será executada
+};
 
-setTimeout(function(){demorada(2000)}, 2000)
-setTimeout(function(){demorada(1000)}, 1000)
-console.log('fim do script principal') // isso aqui vem primeiro
+abrirArquivo("arquivo.txt");
 
 
-// setTimeout(function(){ // isso aqui vai ser depois 
+// function demorada(tempo){
+//   console.log(`demorada ${tempo}`)
+//   const atualMaisTempo = new Date().getTime() + tempo
+//   while(new Date().getTime() <= atualMaisTempo);
+//   const d = 8 + 4;
+//   return d
+// }
+
+// setTimeout(function(){demorada(2000)}, 2000)
+// setTimeout(function(){demorada(1000)}, 1000)
+// console.log('fim do script principal') // isso aqui vem primeiro
+
+// setTimeout(function(){ // isso aqui vai ser depois
 //   console.log('dentro do timeout')
 // }, 0)
 
@@ -41,7 +56,7 @@ console.log('fim do script principal') // isso aqui vem primeiro
 // const e = 5 + 9;
 // //const d = demorada(); // isso aqui só atrasa a execução, sendo que o valor retornando nem é utilizado
 
-// // função é executada depois de 500ms 
+// // função é executada depois de 500ms
 // setTimeout(function(){
 //   const d = demorada()
 //   console.log(d)
