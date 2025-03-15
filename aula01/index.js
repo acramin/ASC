@@ -8,14 +8,14 @@ const abrirArquivo = function (nomeArquivo) {
     } else {
       console.log(conteudo.toString());
       const dobro = +conteudo.toString() * 2;
-      const finalizar = function (erro) {
+      const finalizar = function (erro) { // aqui é outro callback
         if (erro) {
           console.log("Deu erro tentando salvar o dobro");
         } else {
           console.log("Salvou o dobro com sucesso");
         }
       };
-      fs.writeFile("dobro.txt", dobro.toString(), finalizar); // cria novo arquivo caso não exista ou escreve em um arquivo existente
+      fs.writeFile("dobro.txt", dobro.toString(), finalizar); // cria novo arquivo caso não exista ou escreve em um arquivo existente; chama callback
     }
   };
   fs.readFile(nomeArquivo, exibirConteudo); // le arquivo, aqui chama o callback (não sou eu que chamo)
