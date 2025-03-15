@@ -1,12 +1,25 @@
 /* 13 - Execução Síncrona ou Bloqueante */
 
-setTimeout(function(){ // isso aqui vai ser depois 
-  console.log('dentro do timeout')
-}, 0)
+function demorada(tempo){
+  console.log(`demorada ${tempo}`)
+  const atualMaisTempo = new Date().getTime() + tempo
+  while(new Date().getTime() <= atualMaisTempo);
+  const d = 8 + 4;
+  return d
+}
 
-const a = new Date().getTime() + 1000
-while(new Date().getTime() <= a);
-console.log('fora da timeout')
+setTimeout(function(){demorada(2000)}, 2000)
+setTimeout(function(){demorada(1000)}, 1000)
+console.log('fim do script principal') // isso aqui vem primeiro
+
+
+// setTimeout(function(){ // isso aqui vai ser depois 
+//   console.log('dentro do timeout')
+// }, 0)
+
+// const a = new Date().getTime() + 1000
+// while(new Date().getTime() <= a);
+// console.log('fora da timeout')
 
 // // Modelo Single Threaded = único ciclo de execução, sem execução paralela
 // console.log("Primeiro");
