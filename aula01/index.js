@@ -1,20 +1,41 @@
 /* 13 - Execução Síncrona ou Bloqueante */
 
-// abrir arquivo pode ser que use uma thread separada para funcionar
-const fs = require("fs"); // import da biblioteca file system
+const fs = require("fs"); // importa fs
 const abrirArquivo = function (nomeArquivo) {
-  const exibirConteudo = function (erro, conteudo) { // primeiro vem o erro, depois o conteúdo (o retorno de readFile é dessa forma)
+  const exibirConteudo = function (erro, conteudo) { // eu defino o callback
     if (erro) {
       console.log(`Deu erro: ${erro}`);
     } else {
       console.log(conteudo.toString());
+      const dobro = +conteudo.toString() * 2;
+      const finalizar = function (erro) {
+        if (erro) {
+          console.log("Deu erro tentando salvar o dobro");
+        } else {
+          console.log("Salvou o dobro com sucesso");
+        }
+      };
+      fs.writeFile("dobro.txt", dobro.toString(), finalizar); // cria novo arquivo caso não exista ou escreve em um arquivo existente
     }
   };
-  fs.readFile(nomeArquivo, exibirConteudo); // recebe um arquivo e uma função que será executada
+  fs.readFile(nomeArquivo, exibirConteudo); // le arquivo, aqui chama o callback (não sou eu que chamo)
 };
+abrirArquivo("arquivo.txt"); // executa func
 
-abrirArquivo("arquivo.txt");
+// // abrir arquivo pode ser que use uma thread separada para funcionar
+// const fs = require("fs"); // import da biblioteca file system
+// const abrirArquivo = function (nomeArquivo) {
+//   const exibirConteudo = function (erro, conteudo) { // primeiro vem o erro, depois o conteúdo (o retorno de readFile é dessa forma)
+//     if (erro) {
+//       console.log(`Deu erro: ${erro}`);
+//     } else {
+//       console.log(conteudo.toString());
+//     }
+//   };
+//   fs.readFile(nomeArquivo, exibirConteudo); // recebe um arquivo e uma função que será executada
+// };
 
+// abrirArquivo("arquivo.txt");
 
 // function demorada(tempo){
 //   console.log(`demorada ${tempo}`)
