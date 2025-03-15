@@ -1,6 +1,7 @@
 /* 14 - Promises */
 
 function calculoDemorado(numero) {
+  // função mais longa; é chamada primeiro
   return new Promise(function (resolve, reject) {
     let res = 0;
     for (let i = 1; i <= numero; i++) {
@@ -13,6 +14,40 @@ function calculoDemorado(numero) {
 calculoDemorado(10).then((resultado) => {
   console.log(resultado);
 }); // desempacota a Promise
+
+function calculoRapidinho(numero) {
+  // função mais curta; é chamada depois
+  return Promise.resolve((numero * (numero + 1)) / 2);
+}
+
+calculoRapidinho(100).then((resultado) => {
+  console.log(resultado);
+});
+
+function calculoRapidinhoRobusto(numero) {
+  // chamado em 3°; trata erros
+  return numero >= 0
+    ? Promise.resolve((numero * (numero + 1)) / 2)
+    : Promise.reject("Somente valores positivos");
+}
+
+calculoRapidinhoRobusto(20)
+  .then((resultado) => {
+    console.log(resultado);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+calculoRapidinhoRobusto(-1)
+  .then((resultado) => {
+    console.log(resultado);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+console.log("Esperando"); // primeiro acontece isso
 
 /* 13 - Execução Síncrona ou Bloqueante */
 
