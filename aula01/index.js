@@ -1,26 +1,42 @@
+/* 14 - Promises */
+
+function calculoDemorado(numero) {
+  return new Promise(function (resolve, reject) {
+    let res = 0;
+    for (let i = 1; i <= numero; i++) {
+      res += i;
+    }
+    resolve(res);
+  });
+}
+
+calculoDemorado(10).then((resultado) => {
+  console.log(resultado);
+}); // desempacota a Promise
+
 /* 13 - Execução Síncrona ou Bloqueante */
 
-const fs = require("fs"); // importa fs
-const abrirArquivo = function (nomeArquivo) {
-  const exibirConteudo = function (erro, conteudo) { // eu defino o callback
-    if (erro) {
-      console.log(`Deu erro: ${erro}`);
-    } else {
-      console.log(conteudo.toString());
-      const dobro = +conteudo.toString() * 2;
-      const finalizar = function (erro) { // aqui é outro callback
-        if (erro) {
-          console.log("Deu erro tentando salvar o dobro");
-        } else {
-          console.log("Salvou o dobro com sucesso");
-        }
-      };
-      fs.writeFile("dobro.txt", dobro.toString(), finalizar); // cria novo arquivo caso não exista ou escreve em um arquivo existente; chama callback
-    }
-  };
-  fs.readFile(nomeArquivo, exibirConteudo); // le arquivo, aqui chama o callback (não sou eu que chamo)
-};
-abrirArquivo("arquivo.txt"); // executa func
+// const fs = require("fs"); // importa fs
+// const abrirArquivo = function (nomeArquivo) {
+//   const exibirConteudo = function (erro, conteudo) { // eu defino o callback
+//     if (erro) {
+//       console.log(`Deu erro: ${erro}`);
+//     } else {
+//       console.log(conteudo.toString());
+//       const dobro = +conteudo.toString() * 2;
+//       const finalizar = function (erro) { // aqui é outro callback
+//         if (erro) {
+//           console.log("Deu erro tentando salvar o dobro");
+//         } else {
+//           console.log("Salvou o dobro com sucesso");
+//         }
+//       };
+//       fs.writeFile("dobro.txt", dobro.toString(), finalizar); // cria novo arquivo caso não exista ou escreve em um arquivo existente; chama callback
+//     }
+//   };
+//   fs.readFile(nomeArquivo, exibirConteudo); // le arquivo, aqui chama o callback (não sou eu que chamo)
+// };
+// abrirArquivo("arquivo.txt"); // executa func
 
 // // abrir arquivo pode ser que use uma thread separada para funcionar
 // const fs = require("fs"); // import da biblioteca file system
