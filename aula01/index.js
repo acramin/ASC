@@ -18,10 +18,17 @@ function demorada() {
 
 const c = 2 + 3;
 const e = 5 + 9;
-const d = demorada(); // isso aqui só atrasa a execução, sendo que o valor retornando nem é utilizado
+//const d = demorada(); // isso aqui só atrasa a execução, sendo que o valor retornando nem é utilizado
 
+// função é executada depois de 500ms 
+setTimeout(function(){
+  const d = demorada()
+  console.log(d)
+}, 500) // setando o tempo que demorada para chamar, agora demora 2,5 segundos -> a última coisa a ser exibida
+
+// enquanto demorada não é executada, essas linhas seguem executando sem ficar esperando
 // o valor de f não depende do valor devolvido da função demorada
-const f = 2 + a + b;
+const f = 2 + c + e;
 console.log(f);
 
 /* 12 - JSON */
