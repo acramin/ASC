@@ -1,28 +1,28 @@
-/* 13 - Execução Síncrona e Assíncrona */
+/* 13 - Execução Síncrona ou Bloqueante */
 
 // Modelo Single Threaded = único ciclo de execução, sem execução paralela
-console.log('Primeiro')
-console.log('Segundo')
-console.log('Terceiro')
+console.log("Primeiro");
+console.log("Segundo");
+console.log("Terceiro");
 
-const a = 2 + 7     // 1°
-const b = 5         // 2°
-console.log(a + b)  // 3°
+const a = 2 + 7; // 1°
+const b = 5; // 2°
+console.log(a + b); // 3° -> aqui faz sentido ser um fluxo, já que o print depende das declarações anteriores
 
-function demorada(){
-    const atualMais2Segundos = new Date().getTime() + 2000
-    while (new Date().getTime <= atualMais2Segundos);
-    const d = 8+ 4
-    return d
+function demorada() {
+  const atualMais2Segundos = new Date().getTime() + 2000;
+  while (new Date().getTime <= atualMais2Segundos);
+  const d = 8 + 4;
+  return d;
 }
 
-const c = 2 +3
-const e = 5 + 9
-const d = demorada() 
+const c = 2 + 3;
+const e = 5 + 9;
+const d = demorada(); // isso aqui só atrasa a execução, sendo que o valor retornando nem é utilizado
 
 // o valor de f não depende do valor devolvido da função demorada
-const f = 2 + a + b
-console.log(f)
+const f = 2 + a + b;
+console.log(f);
 
 /* 12 - JSON */
 
