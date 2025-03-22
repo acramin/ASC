@@ -3,3 +3,4 @@ cspell.json
 /.vscode
 settings.json
 .env
+.gitignore
