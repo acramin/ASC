@@ -1,6 +1,7 @@
 const axios = require("axios"); // importação do axios
-const appId = "SUA_CHAVE"; // chave da api para chamada
-const q = "Itu"; // parâmetro query cidade
+require("dotenv").config(); // importa dotenv
+const appId = process.env.API_KEY; // chave da api para chamada
+const q = "São Caetano do Sul"; // parâmetro query cidade
 const units = "metric"; // unidade
 const lang = "pt_BR"; // idioma
 const cnt = "10"; // timestamp
@@ -40,7 +41,7 @@ axios
   })
   .then((res) => {
     //verifica quantas previsões têm percepção humana de temperatura acima de 30 graus
-    const lista = res.filter((r) => r.main.feels_like >= 30);  // filtro gera lista com a condição feels_like maior que 30°
+    const lista = res.filter((r) => r.main.feels_like >= 30); // filtro gera lista com a condição feels_like maior que 30°
     console.log(
       `${lista.length} previsões têm percepção humana de temperatura acima de 30 graus`
     );
