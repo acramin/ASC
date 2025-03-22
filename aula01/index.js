@@ -1,53 +1,103 @@
+/* 15 - async await */
+
+async function hello(nome) {
+  return "Oi, " + nome;
+}
+
+const boasVindas = hello("Maria");
+console.log(boasVindas);
+boasVindas.then((res) => console.log(res));
+
+function fatorial(n) {
+  if (n < 0) return Promise.reject("valor não pode ser negativo");
+  let res = 1;
+  for (let i = 2; i <= n; i++) res *= i;
+  return Promise.resolve(res);
+}
+
+function chamadaComThenCatch() {
+  fatorial(5)
+    .then((res) => console.log(res))
+    .catch((res) => console.log(res));
+
+  fatorial(-1)
+    .then((res) => console.log(res))
+    .catch((res) => console.log(res));
+}
+
+chamadaComThenCatch();
+
+//para usar await tem que ser async
+async function chamadaComAwait() {
+  try {
+    //note que não há paralelismo implícito
+    //somente haverá paralelismo se a função chamada utilizar explicitamente
+    const f1 = await fatorial(5);
+    console.log(f1);
+  } catch (err) {
+    console.log(err);
+  }
+
+  try {
+    const f2 = await fatorial(-1);
+    console.log(f2);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+chamadaComAwait();
+
 /* 14 - Promises */
 
-function calculoDemorado(numero) {
-  // função mais longa; é chamada primeiro
-  return new Promise(function (resolve, reject) {
-    let res = 0;
-    for (let i = 1; i <= numero; i++) {
-      res += i;
-    }
-    resolve(res);
-  });
-}
+// function calculoDemorado(numero) {
+//   // função mais longa; é chamada primeiro
+//   return new Promise(function (resolve, reject) {
+//     let res = 0;
+//     for (let i = 1; i <= numero; i++) {
+//       res += i;
+//     }
+//     resolve(res);
+//   });
+// }
 
-calculoDemorado(10).then((resultado) => {
-  console.log(resultado);
-}); // desempacota a Promise
+// calculoDemorado(10).then((resultado) => {
+//   console.log(resultado);
+// }); // desempacota a Promise
 
-function calculoRapidinho(numero) {
-  // função mais curta; é chamada depois
-  return Promise.resolve((numero * (numero + 1)) / 2);
-}
+// function calculoRapidinho(numero) {
+//   // função mais curta; é chamada depois
+//   return Promise.resolve((numero * (numero + 1)) / 2);
+// }
 
-calculoRapidinho(100).then((resultado) => {
-  console.log(resultado);
-});
+// calculoRapidinho(100).then((resultado) => {
+//   console.log(resultado);
+// });
 
-function calculoRapidinhoRobusto(numero) {
-  // chamado em 3°; trata erros
-  return numero >= 0
-    ? Promise.resolve((numero * (numero + 1)) / 2)
-    : Promise.reject("Somente valores positivos");
-}
+// function calculoRapidinhoRobusto(numero) {
+//   // chamado em 3°; trata erros
+//   return numero >= 0
+//     ? Promise.resolve((numero * (numero + 1)) / 2)
+//     : Promise.reject("Somente valores positivos");
+// }
 
-calculoRapidinhoRobusto(20)
-  .then((resultado) => {
-    console.log(resultado);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// calculoRapidinhoRobusto(20)
+//   .then((resultado) => {
+//     console.log(resultado);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
-calculoRapidinhoRobusto(-1)
-  .then((resultado) => {
-    console.log(resultado);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// calculoRapidinhoRobusto(-1)
+//   .then((resultado) => {
+//     console.log(resultado);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
-console.log("Esperando"); // primeiro acontece isso
+// console.log("Esperando"); // primeiro acontece isso
 
 /* 13 - Execução Síncrona ou Bloqueante */
 
