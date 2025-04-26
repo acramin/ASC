@@ -14,6 +14,8 @@
     "axios": "^1.9.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "observacoes": "file:",
+    "uuid": "^11.1.0"
   }
 }
